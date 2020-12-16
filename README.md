@@ -7,7 +7,7 @@ Git implementation of the Godot Engine VCS interface in Godot. We use [libgit2](
 ## Installation Instructions
 
  1. Grab the platform binaries here: <https://github.com/godotengine/godot-git-plugin/releases>
- 2. Then read the installation instructions: https://github.com/godotengine/godot-git-plugin/wiki
+ 2. Then read the installation instructions: <https://github.com/godotengine/godot-git-plugin/wiki>
 
 ## Build Instructions
 
@@ -20,27 +20,27 @@ Required build tools:
 
 ### Windows
 
-> MSVC is our recommended compiler for Windows
+> MSVC is our recommended compiler for Windows.
 
 1. Load the x64 command prompt: `x64 Native Tools Command Prompt for VS 20XX`.
-2. Run ```build_libs.bat Release```.
-3. Run ```scons platform=windows target=release```
+2. Run `build_libs.bat Release`.
+3. Run `scons platform=windows target=release`
 
 ### Linux
 
-> G++ is our recommended compiler for Linux
+> GCC is our recommended compiler for Linux.
 
-1. Prepare script for execution: ```chmod 755 build_libs.sh```
-2. Run ```. ./build_libs.sh Release```.
-3. Run ```scons platform=x11 target=release```.
+1. Prepare script for execution: `chmod 755 build_libs.sh`
+2. Run `./build_libs_linux.sh Release`.
+3. Run `scons platform=x11 target=release`.
 
 ### MacOS
 
-> G++ and Clang++ are our recommended compilers for MacOS
+> GCC and Clang are our recommended compilers for macOS.
 
-1. Prepare script for execution: ```chmod 755 build_libs_mac.sh```
-2. Run ```. ./build_libs_mac.sh Release```.
-3. Run ```scons platform=osx target=release```.
+1. Prepare script for execution: `chmod 755 build_libs_mac.sh`
+2. Run `./build_libs_macos.sh Release`.
+3. Run `scons platform=osx target=release`.
 
 #### Debug build
 

@@ -13,7 +13,7 @@ cache:
 
 matrix:
   include:
-    - name: Linux Debug
+    - name: Linux (debug)
       os: linux
       compiler: gcc
       env: TARGET=debug PLATFORM=x11
@@ -24,14 +24,14 @@ matrix:
           packages:
             [scons, pkg-config, build-essential, p7zip-full]
 
-    - name: Linux Release
+    - name: Linux (release)
       os: linux
       compiler: gcc
+      env: TARGET=release PLATFORM=x11
       addons:
         apt:
           packages:
             [scons, pkg-config, build-essential, p7zip-full]
-      env: TARGET=release PLATFORM=x11
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -40,18 +40,18 @@ install:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      curl -LO https://downloads.sourceforge.net/project/scons/scons-local/3.0.5/scons-local-3.0.5.zip;
-      unzip scons-local-3.0.5.zip;
+      curl -fLO https://downloads.sourceforge.net/project/scons/scons-local/4.0.1/scons-local-4.0.1.zip;
+      unzip scons-local-4.0.1.zip;
     fi
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       export SCONS="./scons.bat";
       /c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/BuildTools/Common7/Tools/VsDevCmd.bat;
-      ./build_libs.bat $TARGET;
+      ./build_libs_windows.bat $TARGET;
     else
       export SCONS="scons";
-      ./build_libs.sh $TARGET;
+      ./build_libs_linux.sh "$TARGET";
     fi
 
-  - $SCONS platform=$PLATFORM target=$TARGET $SCONS_FLAGS;
+  - $SCONS platform=$PLATFORM target=$TARGET $SCONS_FLAGS
